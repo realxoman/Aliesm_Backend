@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'admin_interface',
     'colorfield',
     
+    
     #Default Apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -166,4 +167,10 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
+}
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
 }
