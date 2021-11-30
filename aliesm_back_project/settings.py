@@ -31,12 +31,26 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #Thirdparty Apps
+    'ckeditor',
+    'ckeditor_uploader',
+    'admin_interface',
+    'colorfield',
+    
+    #Default Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #Local Apps
+    'accounts',
+    'main',
+    'blog',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -117,9 +131,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# STATIC
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+        BASE_DIR / "aliesm_back_project" / "staticfiles",
+]
+
+# MEDIA
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# CKEditor Upload Path
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ------------------- Configs --------------------
+from django.contrib.messages import constants as messages
+from django.urls import reverse_lazy
+
+AUTH_USER_MODEL = 'accounts.User'
+
+X_FRAME_OPTIONS='SAMEORIGIN' # only if django version >= 3.0 (django admin interface)
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'info',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
