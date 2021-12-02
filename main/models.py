@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models.fields import DateField
 from ckeditor_uploader.fields import RichTextUploadingField
+from blog.models import Seo,General
 # Create your models here.
 
 # ------------------ Images Path ------------------
@@ -7,7 +9,7 @@ def Homefiles(instance, filename):
     return 'home/{0}'.format(filename)
 # ------------------ /Images Path ------------------
 
-class settings(models.Model):
+class settings(Seo):
     env_name = models.CharField(max_length=50,null=True,blank=True)
     #Hero First
     name_of_site = models.CharField(max_length=50,null=True,blank=True,default="علی اسمعیلی")
@@ -37,7 +39,9 @@ class settings(models.Model):
     tea_num = models.IntegerField(null=True,blank=True)
     
     #Hero Fourth
-    videocv = models.CharField(max_length=50,null=True,blank=True)
+    video_cv = models.CharField(max_length=50,null=True,blank=True)
+    video_cv_image = models.ImageField(upload_to=Homefiles, null=True,blank=True)
+    
     
     class Meta:
         verbose_name = ("Setting")
@@ -46,16 +50,7 @@ class settings(models.Model):
     def __str__(self):
         return self.env_name
 
-class Fee(models.Model):
-
-    class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("s")
-
-    def __str__(self):
-        return self.name
-
-class Contact(models.Model):
+class Contact(General):
     name = models.CharField(max_length=50,null=True,blank=True)
     email = models.CharField(max_length=50,null=True,blank=True)
     subject = models.CharField(max_length=50,null=True,blank=True)
@@ -64,5 +59,72 @@ class Contact(models.Model):
         verbose_name = ("Message")
         verbose_name_plural = ("Messages")
 
+    def __str__(self):
+        return self.name
+    
+class Educations(models.Model):
+    name = models.CharField(max_length=50,null=True,blank=True)
+    time = models.CharField(max_length=50,null=True,blank=True)
+    place = models.CharField(max_length=50,null=True,blank=True)
+    btn_text = models.CharField(max_length=50,null=True,blank=True)
+    btn_link = models.CharField(max_length=50,null=True,blank=True)
+    order = models.PositiveSmallIntegerField(null=True, default=0)
+    class Meta:
+        verbose_name = ("Education")
+        verbose_name_plural = ("Educations")
+        ordering = ["order"]
+    def __str__(self):
+        return self.name
+    
+class Experiences(models.Model):
+    name = models.CharField(max_length=50,null=True,blank=True)
+    time = models.CharField(max_length=50,null=True,blank=True)
+    place = models.CharField(max_length=50,null=True,blank=True)
+    btn_text = models.CharField(max_length=50,null=True,blank=True)
+    btn_link = models.CharField(max_length=50,null=True,blank=True)
+    order = models.PositiveSmallIntegerField(null=True, default=0)
+    class Meta:
+        verbose_name = ("Experience")
+        verbose_name_plural = ("Experiences")
+        ordering = ["order"]
+    def __str__(self):
+        return self.name
+
+class Certificates(models.Model):
+    name = models.CharField(max_length=50,null=True,blank=True)
+    issuer = models.CharField(max_length=50,null=True,blank=True)
+    time_of_issue = models.DateField(null=True,blank=True)
+    expired_time = models.DateField(null=True,blank=True)
+    logo = models.ImageField(upload_to=Homefiles, null=True,blank=True)
+    link_cert = models.CharField(max_length=50,null=True,blank=True)
+    order = models.PositiveSmallIntegerField(null=True, default=0)
+    class Meta:
+        verbose_name = ("Certificate")
+        verbose_name_plural = ("Certificates")
+        ordering = ["order"]
+    def __str__(self):
+        return self.name
+    
+class Skills(models.Model):
+    name = models.CharField(max_length=50,null=True,blank=True)
+    percent = models.CharField(max_length=50,null=True,blank=True)
+    order = models.PositiveSmallIntegerField(null=True, default=0)
+    class Meta:
+        verbose_name = ("Skill")
+        verbose_name_plural = ("Skills")
+        ordering = ["order"]
+    def __str__(self):
+        return self.name
+    
+class Pages(Seo,General):
+    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE,blank=True,null=True)
+    name = models.CharField(max_length=256, blank=True, null=True)
+    featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True)
+    content = RichTextUploadingField(null=True,blank=True)
+    order = models.PositiveSmallIntegerField(null=True, default=0)
+    class Meta:
+        verbose_name = ("Page")
+        verbose_name_plural = ("Pages")
+        ordering = ["order"]
     def __str__(self):
         return self.name

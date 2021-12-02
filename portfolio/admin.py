@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Post,Comment
+from .models import Portfolio
 # Register your models here.
 
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+@admin.register(Portfolio)
+class PortfolioAdmin(admin.ModelAdmin):
     list_display =['id','name','meta_title']
     list_filter = ['created_at','updated_at']
     list_display_links = ['id','name']
@@ -28,8 +28,3 @@ class PostAdmin(admin.ModelAdmin):
          'fields': ('meta_title','meta_description')
      }) 
     )
-    
-
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    pass
