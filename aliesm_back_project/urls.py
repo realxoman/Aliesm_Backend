@@ -19,8 +19,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('accounts/', include('accounts.urls',namespace="blog")),
+    path('', include('main.urls',namespace="main")),
+    path('accounts/', include('accounts.urls',namespace="accounts")),
     path('blog/', include('blog.urls',namespace="blog")),
-    path('portfolio/', include('portfolio.urls',namespace="blog")),
-    path('', include('main.urls',namespace="blog")),
+    path('portfolio/', include('portfolio.urls',namespace="portfolio"))
 ]

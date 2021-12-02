@@ -9,7 +9,7 @@ class settingsAdmin(admin.ModelAdmin):
     search_fields = ['env_name']
     fieldsets = (
         ('Enviorment Section',{
-            'fields': ('env_name')
+            'fields': ['env_name']
             }),
         
         #Hero First

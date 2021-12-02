@@ -119,7 +119,7 @@ class Skills(models.Model):
 class Pages(Seo,General):
     user = models.ForeignKey("accounts.User", on_delete=models.CASCADE,blank=True,null=True)
     name = models.CharField(max_length=256, blank=True, null=True)
-    featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True)
+    featured_image = models.ImageField(upload_to=Homefiles,blank=True,null=True)
     content = RichTextUploadingField(null=True,blank=True)
     order = models.PositiveSmallIntegerField(null=True, default=0)
     class Meta:
