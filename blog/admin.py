@@ -10,26 +10,29 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['name','id']
     fieldsets = (
      ('Post Terms',{
-         'fields': ('name','content')
+         'fields': ('language_field','name','content')
      })  ,
      ('Post Meta',{
          'fields': ('featured_image','user')
      }),('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
      }) 
     )
     add_fieldsets = (
      ('Post Terms',{
-         'fields': ('name','content')
+         'fields': ('language_field','name','content')
      })  ,
      ('Post Meta',{
          'fields': ('featured_image','user')
      }),('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
      }) 
     )
     
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    pass
+    list_display =['username','id','post','usermail']
+    search_fields = ['username','id','usermail']
+    list_filter = ['created_at','updated_at']
+    list_display_links = ['username','usermail','id']

@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import DateTimeField
+from aliesm_back_project.settings import LANGUAGE_CODE
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import MaxLengthValidator
 # Create your models here.
@@ -8,11 +9,16 @@ def posts_thumb_path(instance, filename):
     return 'posts/images/{0}'.format(filename)
 # ------------------ /Images Path ------------------
 
+lang_choice = (
+    ('persian', 'persian'),
+    ('english', 'english')
+)
 
 class General(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد',null=True)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='آخرین بروزرسانی',null=True)
-
+    language_field = models.CharField(max_length=256,blank=True,null=True,choices=lang_choice,verbose_name='زبان این محتوا')
+    
     class Meta:
         abstract = True
 
@@ -25,6 +31,8 @@ class General(models.Model):
     get_updated_at.short_description = 'آخرین بروزرسانی'
 
 class Seo(models.Model):
+    slug = models.CharField(verbose_name="پیوند یکتا", max_length=60, \
+        null=True)
     meta_title = models.CharField(verbose_name="meta title (SEO)", max_length=60, \
         null=True, help_text="حداکثر 60 کاراکتر")
     meta_description = models.TextField(verbose_name="meta description (SEO)", \

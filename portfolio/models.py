@@ -13,7 +13,7 @@ class Portfolio(General,Seo):
     name = models.CharField(max_length=256, blank=True, null=True)
     featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True)
     content = RichTextUploadingField(blank=True,null=True)
-
+    link = models.URLField(null=True,blank=True)
     def __str__(self):
         return self.name
 

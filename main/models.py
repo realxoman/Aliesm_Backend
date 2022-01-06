@@ -9,7 +9,7 @@ def Homefiles(instance, filename):
     return 'home/{0}'.format(filename)
 # ------------------ /Images Path ------------------
 
-class settings(Seo):
+class settings(General,Seo):
     env_name = models.CharField(max_length=50,null=True,blank=True)
     #Hero First
     name_of_site = models.CharField(max_length=50,null=True,blank=True,default="علی اسمعیلی")
@@ -62,12 +62,12 @@ class Contact(General):
     def __str__(self):
         return self.name
     
-class Educations(models.Model):
+class Educations(General,models.Model):
     name = models.CharField(max_length=50,null=True,blank=True)
     time = models.CharField(max_length=50,null=True,blank=True)
     place = models.CharField(max_length=50,null=True,blank=True)
     btn_text = models.CharField(max_length=50,null=True,blank=True)
-    btn_link = models.CharField(max_length=50,null=True,blank=True)
+    btn_link = models.URLField(max_length=50,null=True,blank=True)
     order = models.PositiveSmallIntegerField(null=True, default=0)
     class Meta:
         verbose_name = ("Education")
@@ -76,12 +76,12 @@ class Educations(models.Model):
     def __str__(self):
         return self.name
     
-class Experiences(models.Model):
+class Experiences(General,models.Model):
     name = models.CharField(max_length=50,null=True,blank=True)
     time = models.CharField(max_length=50,null=True,blank=True)
     place = models.CharField(max_length=50,null=True,blank=True)
     btn_text = models.CharField(max_length=50,null=True,blank=True)
-    btn_link = models.CharField(max_length=50,null=True,blank=True)
+    btn_link = models.URLField(max_length=50,null=True,blank=True)
     order = models.PositiveSmallIntegerField(null=True, default=0)
     class Meta:
         verbose_name = ("Experience")
@@ -90,13 +90,13 @@ class Experiences(models.Model):
     def __str__(self):
         return self.name
 
-class Certificates(models.Model):
+class Certificates(General,models.Model):
     name = models.CharField(max_length=50,null=True,blank=True)
     issuer = models.CharField(max_length=50,null=True,blank=True)
     time_of_issue = models.DateField(null=True,blank=True)
     expired_time = models.DateField(null=True,blank=True)
     logo = models.ImageField(upload_to=Homefiles, null=True,blank=True)
-    link_cert = models.CharField(max_length=50,null=True,blank=True)
+    link_cert = models.URLField(max_length=50,null=True,blank=True)
     order = models.PositiveSmallIntegerField(null=True, default=0)
     class Meta:
         verbose_name = ("Certificate")
@@ -105,7 +105,7 @@ class Certificates(models.Model):
     def __str__(self):
         return self.name
     
-class Skills(models.Model):
+class Skills(General,models.Model):
     name = models.CharField(max_length=50,null=True,blank=True)
     percent = models.CharField(max_length=50,null=True,blank=True)
     order = models.PositiveSmallIntegerField(null=True, default=0)

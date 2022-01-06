@@ -9,7 +9,7 @@ class settingsAdmin(admin.ModelAdmin):
     search_fields = ['env_name']
     fieldsets = (
         ('Enviorment Section',{
-            'fields': ['env_name']
+            'fields': ['language_field','env_name']
             }),
         
         #Hero First
@@ -52,12 +52,12 @@ class settingsAdmin(admin.ModelAdmin):
         
         #SEO
         ('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
          }) 
                  )
     add_fieldsets = (
         ('Enviorment Section',{
-            'fields': ('env_name')
+            'fields': ('language_field','env_name')
             }),
         
         #Hero First
@@ -100,7 +100,7 @@ class settingsAdmin(admin.ModelAdmin):
         
         #SEO
         ('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
          }) 
                  )
 
@@ -112,7 +112,7 @@ class CertificatesAdmin(admin.ModelAdmin):
     search_fields = ['name','issuer']
     fieldsets = (
      ('Certificate Terms',{
-         'fields': ('name','issuer')
+         'fields': ('language_field','name','issuer')
      }),
      ('Certificate Times',{
          'fields': ('time_of_issue','expired_time')
@@ -123,7 +123,7 @@ class CertificatesAdmin(admin.ModelAdmin):
     )
     add_fieldsets = (
      ('Certificate Terms',{
-         'fields': ('name','issuer')
+         'fields': ('language_field','name','issuer')
      }),
      ('Certificate Times',{
          'fields': ('time_of_issue','expired_time')
@@ -147,7 +147,7 @@ class EducationsAdmin(admin.ModelAdmin):
     search_fields = ['name','place']
     fieldsets = (
         ('Short Details',{
-            'fields': ('name','place','time')
+            'fields': ('language_field','name','place','time')
             }),
         ('Details',{
             'fields': ('btn_text','btn_link','order')
@@ -155,7 +155,7 @@ class EducationsAdmin(admin.ModelAdmin):
                  )
     add_fieldsets = (
         ('Short Details',{
-            'fields': ('name','place','time')
+            'fields': ('language_field','name','place','time')
             }),
         ('Details',{
             'fields': ('btn_text','btn_link','order')
@@ -169,7 +169,7 @@ class ExperiencesAdmin(admin.ModelAdmin):
     search_fields = ['name','place']
     fieldsets = (
         ('Short Details',{
-            'fields': ('name','place','time')
+            'fields': ('language_field','name','place','time')
             }),
         ('Details',{
             'fields': ('btn_text','btn_link','order')
@@ -177,7 +177,7 @@ class ExperiencesAdmin(admin.ModelAdmin):
                  )
     add_fieldsets = (
         ('Short Details',{
-            'fields': ('name','place','time')
+            'fields': ('language_field','name','place','time')
             }),
         ('Details',{
             'fields': ('btn_text','btn_link','order')
@@ -192,7 +192,7 @@ class PagesAdmin(admin.ModelAdmin):
     search_fields = ['name','id']
     fieldsets = (
      ('Post Terms',{
-         'fields': ('name','content')
+         'fields': ('language_field','name','content')
      })  ,
      ('Post Meta',{
          'fields': ('featured_image','user')
@@ -202,12 +202,12 @@ class PagesAdmin(admin.ModelAdmin):
     )
     add_fieldsets = (
      ('Post Terms',{
-         'fields': ('name','content')
+         'fields': ('language_field','name','content')
      })  ,
      ('Post Meta',{
          'fields': ('featured_image','user')
      }),('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
      }) 
     )
 

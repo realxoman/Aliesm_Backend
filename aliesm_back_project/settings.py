@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'admin_interface',
     'colorfield',
-    
+    'rest_framework',
     
     #Default Apps
     'django.contrib.admin',
@@ -95,6 +95,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'alixoir_pr',
+#         'USER': 'alixoir_pr',
+#         'PASSWORD': 'f+Wvo1k;ZhF=',
+#         'HOST': 'aliesm.com',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation

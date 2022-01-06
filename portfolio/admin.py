@@ -10,21 +10,21 @@ class PortfolioAdmin(admin.ModelAdmin):
     search_fields = ['name','id']
     fieldsets = (
      ('Post Terms',{
-         'fields': ('name','content')
+         'fields': ('language_field','name','content')
      })  ,
      ('Post Meta',{
          'fields': ('featured_image','user')
      }),('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
      }) 
     )
     add_fieldsets = (
      ('Post Terms',{
-         'fields': ('name','content')
+         'fields': ('language_field','name','content')
      })  ,
      ('Post Meta',{
          'fields': ('featured_image','user')
      }),('SEO Terms',{
-         'fields': ('meta_title','meta_description')
+         'fields': ('slug','meta_title','meta_description')
      }) 
     )
