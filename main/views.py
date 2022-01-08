@@ -9,7 +9,7 @@ from rest_framework import generics
 # Create your views here.
 
 class SettingListAPIView(generics.ListAPIView):
-    queryset = Settings.objects.all()
+    queryset = Setting.objects.all()
     serializer_class = SettingSerializer
     
 class ContactListCreateAPIView(generics.ListCreateAPIView):

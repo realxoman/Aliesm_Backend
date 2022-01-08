@@ -81,7 +81,7 @@ class Experiences(General,models.Model):
     time = models.CharField(max_length=50,null=True,blank=True,verbose_name="Years of Experience")
     place = models.CharField(max_length=50,null=True,blank=True,verbose_name="Company location")
     btn_text = models.CharField(max_length=50,null=True,blank=True,verbose_name="Button Title")
-    btn_link = models.URLField(max_length=50,null=True,blank=Trueverbose_name="Button URL")
+    btn_link = models.URLField(max_length=50,null=True,blank=True,verbose_name="Button URL")
     order = models.PositiveSmallIntegerField(null=True, default=0,verbose_name="Order Number")
     class Meta:
         verbose_name = ("Experience")

@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Certificates,Contact,Educations,Experiences,Pages,Skills,settings
+from .models import Certificates,Contact,Educations,Experiences,Pages,Skills,Setting
 # Register your models here.
 
-@admin.register(settings)
+@admin.register(Setting)
 class settingsAdmin(admin.ModelAdmin):
     list_display =['env_name','name_of_site','slang']
     list_display_links = ['env_name']
