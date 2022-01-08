@@ -42,10 +42,10 @@ class Seo(models.Model):
         abstract = True
 
 class Post(General,Seo):
-    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE,blank=True,null=True)
-    name = models.CharField(max_length=256, blank=True, null=True)
-    featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True)
-    content = RichTextUploadingField(blank=True,null=True)
+    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE,blank=True,null=True,verbose_name="Author of Post")
+    name = models.CharField(max_length=256, blank=True, null=True,verbose_name="Name of Post")
+    featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True,verbose_name="Thumbnail of Post")
+    content = RichTextUploadingField(blank=True,null=True,verbose_name="Content of Post")
 
     def __str__(self):
         return self.name
@@ -58,11 +58,11 @@ class Post(General,Seo):
         verbose_name = 'Post'
         
 class Comment(General):
-    comments = models.ForeignKey("Comment", on_delete=models.CASCADE,blank=True,null=True)
-    post = models.ForeignKey("Post", on_delete=models.CASCADE,blank=True,null=True)
-    username = models.CharField(max_length=256, blank=True, null=True)
-    usermail = models.CharField(max_length=256, blank=True, null=True)
-    text = models.TextField(blank=True,null=True)
+    comments = models.ForeignKey("Comment", on_delete=models.CASCADE,blank=True,null=True,verbose_name="Parent Comment")
+    post = models.ForeignKey("Post", on_delete=models.CASCADE,blank=True,null=True,verbose_name="Parent Post")
+    username = models.CharField(max_length=256, blank=True, null=True,verbose_name="Author Name")
+    usermail = models.CharField(max_length=256, blank=True, null=True,verbose_name="Author Email")
+    text = models.TextField(blank=True,null=True,verbose_name="Content Of Comment")
     
     def __str__(self):
         return self.username + " " + str(self.id)

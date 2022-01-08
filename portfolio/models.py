@@ -9,11 +9,11 @@ def posts_thumb_path(instance, filename):
 # ------------------ /Images Path ------------------
 
 class Portfolio(General,Seo):
-    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE,blank=True,null=True)
-    name = models.CharField(max_length=256, blank=True, null=True)
-    featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True)
-    content = RichTextUploadingField(blank=True,null=True)
-    link = models.URLField(null=True,blank=True)
+    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE,blank=True,null=True,verbose_name="Author User")
+    name = models.CharField(max_length=256, blank=True, null=True,verbose_name="Title Of Portfolio")
+    featured_image = models.ImageField(upload_to=posts_thumb_path,blank=True,null=True,verbose_name="Thumbnail Image")
+    content = RichTextUploadingField(blank=True,null=True,verbose_name="Content Text")
+    link = models.URLField(null=True,blank=True,verbose_name="URL of the Project")
     def __str__(self):
         return self.name
 

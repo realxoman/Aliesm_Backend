@@ -1,16 +1,16 @@
 from django.db.models import query
 from django.shortcuts import render
-from .models import Educations,Experiences,Contact,Certificates,Pages,Skills,settings
-from .serializers import CertificatesSerializer,ContactSerializer,EducationsSerializer,ExperiencesSerializer,PagesSerializer,settingsSerializer,SkillsSerializer
+from .models import Educations,Experiences,Contact,Certificates,Pages,Skills,Setting
+from .serializers import CertificatesSerializer,ContactSerializer,EducationsSerializer,ExperiencesSerializer,PagesSerializer,SettingSerializer,SkillsSerializer
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 # Create your views here.
 
-class settingsListAPIView(generics.ListAPIView):
-    queryset = settings.objects.all()
-    serializer_class = settingsSerializer
+class SettingListAPIView(generics.ListAPIView):
+    queryset = Settings.objects.all()
+    serializer_class = SettingSerializer
     
 class ContactListCreateAPIView(generics.ListCreateAPIView):
     queryset = Contact.objects.all()
